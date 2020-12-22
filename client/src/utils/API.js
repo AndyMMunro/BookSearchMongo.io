@@ -2,6 +2,9 @@ import axios from "axios";
 
 export default {
   // Gets all books
+  getGoogleBooks: function() {
+    return axios.get("/api/apiroute");
+  },
   getBooks: function() {
     return axios.get("/api/books");
   },
