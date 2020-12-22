@@ -16,39 +16,39 @@ function BootstrapCard (props){
         // })
   return(
     // {...props.result.volumeInfo.title}
-    // <Card>
-    //   <Card.Header></Card.Header>
-    //   <Card.Img variant="top" src="holder.js/100px160" />
-    //   <Card.Body>
-    //   <Card.Title >Special title treatment</Card.Title>
-    //   <Card.Text>
-    //   With supporting text below as a natural lead-in to additional content.
-    //   </Card.Text>
-    //   <Button variant="primary">Go somewhere</Button>
-    //   </Card.Body>
-    // </Card>
-    <div>
-      <table className="emp-list" >
-            <thead>
-                <tr>
-                    <th scope="col">Image</th>
-                    <th scope="col">
-                      Name
-                    </th>
-                </tr>
-            </thead>
-            <tbody>
-            {props.results.map((results) => (
-                <tr className="employee-data" key={results.data.volumeInfo.value} >  
-                    <td className="emp-list-name" key={results.data.volumeInfo.title}>
-                      <p></p>
-                    </td>
+    <Card>
+      <Card.Header></Card.Header>
+      <Card.Img variant="top" src="holder.js/100px160" />
+      <Card.Body>
+      <Card.Title >Special title treatment</Card.Title>
+      <Card.Text>
+      With supporting text below as a natural lead-in to additional content.
+      </Card.Text>
+      <Button variant="primary">Go somewhere</Button>
+      </Card.Body>
+    </Card>
+    // <div>
+    //   <table className="emp-list" >
+    //         <thead>
+    //             <tr>
+    //                 <th scope="col">Image</th>
+    //                 <th scope="col">
+    //                   Name
+    //                 </th>
+    //             </tr>
+    //         </thead>
+    //         <tbody>
+    //         {props.results.map((results) => (
+    //             <tr className="employee-data" key={results.data.volumeInfo.value} >  
+    //                 <td className="emp-list-name" key={results.data.volumeInfo.title}>
+    //                   <p></p>
+    //                 </td>
                                       
-                </tr>
-            ))}
-            </tbody>
-        </table>
-    </div>
+    //             </tr>
+    //         ))}
+    //         </tbody>
+    //     </table>
+    // </div>
   )}
         
 
