@@ -4,7 +4,6 @@ import Axios from "axios";
 import Container from "../components/Container";
 import Wrapper from "../components/Wrapper";
 import SearchForm from "../components/SearchForm";
-// import SearchDisplay from "../components/SearchDisplay"
 import Card from "../components/Card"
 
 function Home () {
@@ -12,40 +11,60 @@ function Home () {
   const [search, setSearch] = useState("");
   const [error, setError] = useState("");
   // const [card, setCard] = useState([]);
+  console.log(bookData, "testing book data");
+
 
     useEffect(() => {
       if(!search) {
-        // pulls the api data from the utils/API.js->Utils/API.js->here 
-        return Axios.get("api/apiroute")
-        .then(results => {
-          console.log(results,"testing page response");
+        // console.log(search, "test search");
+        // pulls the api data from the back utils/API.js->front utils/API.js->here 
+         Axios.get("api/apiroute/")
+        .then(res => {
+          // console.log(res,"testing page response");
 
           if (res.data.length === 0){
             throw new error("please enter a search");
           }
           if (res.data.status === "error"){
-            throw new error (results.data.message)
+            throw new error (res.data.message)
           }
-          setBookData(results.data.volumeInfo)
+          setBookData(res.data)
+          // setCard(res.data.volumeInfo)
+          console.log(res.data, "testing book setBookData");
         })
         .catch (error => setError(error));
         }else{
           BookSearch(search)
         }
-    },[search]);
+    },[]);
     
+
     const handleInputChange = event => {
       event.preventDefault()
       setSearch(event.target.value);
+
+      Axios.get("api/apiroute?title=" + event.target.value)
+      .then(res => {
+        console.log(res,"testing page response");
+        setBookData(res.data);
+
+        if (res.data.length === 0){
+          throw new error("please enter a search");
+        }
+        if (res.data.status === "error"){
+          throw new error (res.data.message)
+        }
+              })        // setCard(res.data.volumeInfo)
+        // console.log(res.data, "testing book setBookData");
       // sets display of the data in the card component
-      setBookData(BookSearch(search));
+      // setBookData(BookSearch(search));
     };
     
 function BookSearch(search){
   let searchData = []
   
   searchData = bookData.filter(data => 
-    data.title.toLowerCase().includes(search))
+    data.volumeInfo.title.toLowerCase().includes(search))
     // console.log(search);
     console.log(search, "testing search")
     return searchData;
@@ -58,7 +77,9 @@ return (
             handleInputChange = {handleInputChange}
             results = {search}
           />
-          <Card/>
+          <Card 
+            results={bookData} 
+            />
         </Wrapper>
     </Container>
   );

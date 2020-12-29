@@ -3,10 +3,8 @@ const utilsAPI = require("../../Utils/API.js");
 
 // Matches with "/api/books"
 router.route("/")
-
 // creates are route to the utils/API folder so data can be accessed. 
   .get(utilsAPI.findAll)
-
 
   // .post(utilsAPI.create);
 
