@@ -1,13 +1,7 @@
 import axios from "axios";
 
-// const baseURL =" https://www.googleapis.com/books/v1/volumes?q="
 export default {
-  // Gets all books and search them
-  getGoogleBooks: function(query) {
-    query="?title=harrypotter";
-    return axios.get("/api/apiroute" + query);
-  },
-
+  // Gets all books
   getBooks: function() {
     return axios.get("/api/books");
   },

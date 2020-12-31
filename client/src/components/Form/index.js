@@ -1,26 +1,27 @@
 import React from "react";
-// import {useEffect, useState} from "react";
-import Form from 'react-bootstrap/Form';
-import Button from 'react-bootstrap/Button';
-// import Axios from "axios";
 
+// This file exports the Input, TextArea, and FormBtn components
 
-function SearchForm(props){
-
-
+export function Input(props) {
   return (
-
-    <Form>
-      <Form.Group controlId="formBasicPassword">
-        <Form.Label>Search Your Book</Form.Label>
-        <Form.Control type="search" placeholder="Search"  />
-      </Form.Group>
-      <Button variant="primary" type="submit">
-        Submit
-      </Button>
-  </Form>
-        
+    <div className="form-group">
+      <input className="form-control" {...props} />
+    </div>
   );
-};
+}
 
-export default SearchForm;
+export function TextArea(props) {
+  return (
+    <div className="form-group">
+      <textarea className="form-control" rows="20" {...props} />
+    </div>
+  );
+}
+
+export function FormBtn(props) {
+  return (
+    <button {...props} style={{ float: "right", marginBottom: 10 }} className="btn btn-success">
+      {props.children}
+    </button>
+  );
+}
